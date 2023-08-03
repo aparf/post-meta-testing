@@ -96,7 +96,7 @@ body{
 
 @media screen and (max-width: 600px) {
   .container{
-    height:95%;
+/*    height:95%;*/
   }
 
   html, body{
@@ -134,7 +134,7 @@ body{
     background-color: black;
   }
 
-  .horizontal{
+  /*.horizontal{
     height: 2.5%;
     width: 100%;
     background-color: rgba(236, 236, 236, 0.97);
@@ -151,7 +151,7 @@ body{
   #top{
     top: 0;
     height:0;
-  }
+  }*/
 
 
 }
