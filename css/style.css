@@ -119,11 +119,13 @@ body{
 
   #mobileVersion{
     display: inline-block;
+    preserveAspectRatio: none;
 /*    background-color: blue;*/
 
   }
 
   #afterWindow{
+    top:0; 
     display: none;
   }
 
