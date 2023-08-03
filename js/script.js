@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 4")
+alert("VERSION 5")
 var hammer = new Hammer(document.getElementById('mydiv'));
 console.log(hammer)
 
@@ -149,7 +149,7 @@ var pinch = new Hammer.Pinch();
 mc.add([pinch]);
 
 
-mc.on("pinch rotate", function(ev) {
+mc.on("pinch", function(ev) {
   document.getElementById('mydiv').style.background = "blue";
 });
 
