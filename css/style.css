@@ -96,9 +96,17 @@ body{
 
 @media screen and (max-width: 600px) {
   .container{
+    z-index: unset;
 /*    height:95%;*/
     position: absolute;
     top:0px;
+  }
+  #background{
+    position: fixed;
+    z-index: initial;
+    height: 100%;
+    width:100%;
+    background-color: white;
   }
 
   html, body{
@@ -106,8 +114,8 @@ body{
   }
   body {
     position: relative;
-    background-color: blue;
-/*    background-color: rgba(236, 236, 236, 0.97);*/
+/*    background-color: blue;*/
+    background-color: rgba(236, 236, 236, 0.97);
 
   }
 /*        <svg id="afterWindow" height="100vh" viewBox="0 0 575 1117" fill="red" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="None">
@@ -121,6 +129,7 @@ body{
   }
 
   #mobileVersion{
+    z-index:4;
     display: inline-block;
     preserveAspectRatio: none;
 /*    background-color: blue;*/
@@ -133,6 +142,7 @@ body{
   }
 
   .image-container{
+    z-index: 3;
     width: 200px;
     height: 300px;
     background-image: none;
@@ -141,6 +151,7 @@ body{
 
   .vertical{
     height: 100%;
+    z-index: 4;
   }
 
   /*.horizontal{
