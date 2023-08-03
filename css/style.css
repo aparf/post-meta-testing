@@ -97,6 +97,8 @@ body{
 @media screen and (max-width: 600px) {
   .container{
 /*    height:95%;*/
+    position: absolute;
+    top: 0px;
   }
 
   html, body{
