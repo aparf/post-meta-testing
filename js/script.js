@@ -8,6 +8,8 @@ const windowH = window.innerHeight;
 
 const browserUiBarsH = viewPortH - windowH;
 rootElement.style.height = `calc(100vh - ${browserUiBarsH}px)`;
+document.getElementById("left").style.height = `calc(100vh - ${browserUiBarsH}px)`;
+document.getElementById("right").style.height = `calc(100vh - ${browserUiBarsH}px)`;
 
 // Function to calculate the width
 function calculateVerticalWidth() {
