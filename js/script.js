@@ -90,19 +90,27 @@ window.onload = function() {
   // find the element that you want to drag.
   var box = document.getElementById('mydiv');
   
-  /* listen to the touchMove event,
-  every time it fires, grab the location
-  of touch and assign it to box */
-  
+  var delta = { x: 0, y: 0 }; // how much we've moved
+
+  box.addEventListener('touchstart', function(e) {
+    // record the initial touch point
+    var touch = e.targetTouches[0];
+    delta.x = touch.pageX - box.offsetLeft;
+    delta.y = touch.pageY - box.offsetTop;
+  });
+
   box.addEventListener('touchmove', function(e) {
     // grab the location of touch
     var touchLocation = e.targetTouches[0];
     
     // assign box new coordinates based on the touch.
-    box.style.left = touchLocation.pageX + 'px';
-    box.style.top = touchLocation.pageY + 'px';
-  })
-  
+    box.style.left = touchLocation.pageX - delta.x + 'px';
+    box.style.top = touchLocation.pageY - delta.y + 'px';
+
+    // prevent page scrolling
+    e.preventDefault();
+  });
+
   /* record the position of the touch
   when released using touchend event.
   This will be the drop position. */
@@ -111,10 +119,8 @@ window.onload = function() {
     // current box position.
     var x = parseInt(box.style.left);
     var y = parseInt(box.style.top);
-  })
-  
+  });
 }
-
 
 
 
