@@ -126,36 +126,30 @@ window.onload = function() {
 }
 
 
-alert("VERSION 5")
-var hammer = new Hammer(document.getElementById('mydiv'));
-console.log(hammer)
-
-// hammer.on('tap', function(e) {
-//   alert('hello!');
-//   document.getElementById('mydiv').style.background = "blue";
-// });
-
-// hammer.on('pinchin', function(e) {
-//   alert('hello!');
-//   document.getElementById('mydiv').style.background = "blue";
-// });
-
-
-
-var mc = new Hammer.Manager(hammer);
+alert("VERSION 6")
+var mc = new Hammer.Manager(document.getElementById("mydiv"));
 
 var pinch = new Hammer.Pinch();
 
+// add to the Manager
 mc.add([pinch]);
 
+var initialScale = 1;
+var scale = 1;
 
-mc.on("pinch", function(ev) {
-  document.getElementById('mydiv').style.background = "blue";
+mc.on("pinchin pinchout", function(ev) {
+    if(ev.type == 'pinchin') {
+        scale = initialScale - ev.scale;
+    } else if(ev.type == 'pinchout') {
+        scale = initialScale + ev.scale;
+    }
+
+    myElement.style.transform = 'scale(' + scale + ')';
 });
 
-
-
-hammerIt(document.getElementById('mydiv'))
+mc.on("pinchend", function(ev) {
+    initialScale = scale;
+});
 
 
 document.addEventListener("keydown", function(event) {
