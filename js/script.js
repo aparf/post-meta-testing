@@ -1,3 +1,6 @@
+
+
+
 // Get the center and left elements
 const centerEl = document.getElementById("center");
 const leftEl = document.getElementById("left");
@@ -122,6 +125,15 @@ window.onload = function() {
   });
 }
 
+
+
+var hammer = new Hammer(document.getElementById('mydiv'));
+console.log(hammer)
+
+hammer.on('pinchin', function(e) {
+  alert('hello!');
+  document.getElementById('mydiv').style.background = "blue";
+});
 
 
 document.addEventListener("keydown", function(event) {
