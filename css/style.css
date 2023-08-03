@@ -98,16 +98,11 @@ body{
   .container{
 /*    height:95%;*/
     position: absolute;
-    top: 0px;
+    top:0px;
   }
 
   html, body{
-    heigth: 100%; 
     overflow: hidden;
-  }
-
-  .vertical{
-    height: 100%;
   }
   body {
     position: relative;
@@ -119,7 +114,7 @@ body{
       </svg>*/
   #windowPath{
 
-/*    height: 100vh;*/
+    height: 100vh;
 
     d: path("M393 0H0V852H393V0ZM150 67C76.5461 67 17 126.546 17 200V701C17 774.454 76.5461 834 150 834H243C316.454 834 376 774.454 376 701V200C376 126.546 316.454 67 243 67H150Z");
   }
@@ -141,6 +136,10 @@ body{
     height: 300px;
     background-image: none;
     background-color: black;
+  }
+
+  .vertical{
+    height: 100%;
   }
 
   /*.horizontal{

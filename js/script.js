@@ -11,6 +11,18 @@ const leftEl = document.getElementById("left");
 // document.getElementById("left").style.height = `calc(100vh - ${browserUiBarsH}px)`;
 // document.getElementById("right").style.height = `calc(100vh - ${browserUiBarsH}px)`;
 
+const rootElement = document.getElementById("container");
+const viewPortH = rootElement.getBoundingClientRect().height;
+const windowH = window.innerHeight;
+
+const browserUiBarsH = viewPortH - windowH;
+rootElement.style.height = `calc(100vh - ${browserUiBarsH}px)`;
+document.getElementById("container").style.height = `calc(100vh - ${browserUiBarsH}px)`;
+
+
+
+
+
 // Function to calculate the width
 function calculateVerticalWidth() {
   const desktopWidth = document.getElementById("afterWindow").getBoundingClientRect().width;
