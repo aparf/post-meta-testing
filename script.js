@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 10")
+alert("VERSION 11")
 
 // var af = new AlloyFinger(document.getElementById("mydiv"), {
 //   pinchStart: function () {
@@ -139,19 +139,22 @@ alert("VERSION 10")
 
 var mydiv = document.getElementById('mydiv');
 
-new AlloyFinger(mydiv, {
-    multipointStart: function () {
-        // save initial size
-        this.initialWidth = mydiv.offsetWidth;
-        this.initialHeight = mydiv.offsetHeight;
-    },
-    pinch: function (evt) {
-        // scale the div
-        var scale = evt.zoom;
-        mydiv.style.width = this.initialWidth * scale + 'px';
-        mydiv.style.height = this.initialHeight * scale + 'px';
-    }
-})
+ new AlloyFinger(mydiv, {
+            multipointStart: function () {
+                // save initial size and position
+                this.initialWidth = mydiv.offsetWidth;
+                this.initialHeight = mydiv.offsetHeight;
+            },
+            pinch: function (evt) {
+                // scale the div
+                var scale = evt.zoom;
+                mydiv.style.width = this.initialWidth * scale + 'px';
+                mydiv.style.height = this.initialHeight * scale + 'px';
+                // adjust position to scale from the center
+                mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
+                mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+            }
+        });
 
 document.addEventListener("keydown", function(event) {
   event.preventDefault()
