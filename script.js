@@ -126,16 +126,32 @@ window.onload = function() {
 }
 
 
-alert("VERSION 9")
+alert("VERSION 10")
 
-var af = new AlloyFinger(document.getElementById("mydiv"), {
-  pinchStart: function () {
-    initScale = document.getElementById("mydiv").scaleX;
-  },
-  pinch: function (evt) {
-      document.getElementById("mydiv").scaleX = document.getElementById("mydiv").scaleY = initScale * evt.zoom;
-  }})
+// var af = new AlloyFinger(document.getElementById("mydiv"), {
+//   pinchStart: function () {
+//     initScale = document.getElementById("mydiv").scaleX;
+//   },
+//   pinch: function (evt) {
+//       document.getElementById("mydiv").scaleX = document.getElementById("mydiv").scaleY = initScale * evt.zoom;
+//   }})
 
+
+var mydiv = document.getElementById('mydiv');
+
+new AlloyFinger(mydiv, {
+    multipointStart: function () {
+        // save initial size
+        this.initialWidth = mydiv.offsetWidth;
+        this.initialHeight = mydiv.offsetHeight;
+    },
+    pinch: function (evt) {
+        // scale the div
+        var scale = evt.zoom;
+        mydiv.style.width = this.initialWidth * scale + 'px';
+        mydiv.style.height = this.initialHeight * scale + 'px';
+    }
+})
 
 document.addEventListener("keydown", function(event) {
   event.preventDefault()
