@@ -160,7 +160,11 @@ new AlloyFinger(mydiv, {
 
     pinch: function (evt) {
         // Scale the div
-        var scale = initScale *(evt.zoom - 1) * scaleFactor;
+        if (evt.zoom >= 1){
+          var scale = initScale * (((evt.zoom - 1) * scaleFactor) + 1);
+        } else {
+          var scale = initScale * evt.zoom * scaleFactor;
+        }
         mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
