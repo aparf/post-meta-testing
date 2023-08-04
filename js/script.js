@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 19.1")
+alert("VERSION 19.2")
 
 
 
@@ -163,10 +163,13 @@ new AlloyFinger(mydiv, {
         // Scale the div
         var scale = initScale * evt.zoom;
         alert(evt.zoom)
-        // if(evt.zoom >= 0)
 
+        if(evt.zoom >= 1){
+          mydiv.style.transform = 'scale(' + initScale + scaleFactor + ')';
+        } else{
+          mydiv.style.transform = 'scale(' + initScale - scaleFactor + ')';
+        }
 
-        mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
 
