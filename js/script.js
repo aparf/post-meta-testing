@@ -133,7 +133,11 @@ alert("VERSION 14.5")
 
 
 var mydiv = document.getElementById('mydiv');
+mydiv.style.transformOrigin = 'center center';
+
 var initialPos = { left: mydiv.offsetLeft, top: mydiv.offsetTop };
+console.log(initialPos)
+
 
 new AlloyFinger(mydiv, {
     multipointStart: function () {
