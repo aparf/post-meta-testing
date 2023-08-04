@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 14")
+alert("VERSION 14.5")
 
 
 
@@ -147,14 +147,14 @@ new AlloyFinger(mydiv, {
         // var scale = evt.zoom;
 
         let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
-        scale += 1;
+        scale += 0.1;
         // mydiv.style.width = this.initialWidth * scale * 0.25 + 'px';
         // mydiv.style.height = this.initialHeight * scale * 0.25 + 'px';
         // // adjust position to scale from the center
         // mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
         // mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
 
-        mydiv.style.transform = "scale(" + scale * 0.01 + ")";
+        mydiv.style.transform = "scale(" + scale + ")";
     }
 });
 
