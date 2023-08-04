@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 16.1")
+alert("VERSION 17")
 
 
 
@@ -139,32 +139,54 @@ var initialPos = { left: mydiv.offsetLeft, top: mydiv.offsetTop };
 console.log(initialPos)
 
 
+
+var mydiv = document.getElementById('mydiv');
+var initScale = 1; // You should initialize the scale to 1, which stands for 100% (the original size)
+
 new AlloyFinger(mydiv, {
     multipointStart: function () {
-        // save initial size and position
-        // this.initialWidth = mydiv.offsetWidth;
-        // this.initialHeight = mydiv.offsetHeight;
-        initScale = mydiv.scaleX;
+        // Fetch the current scale of the div if it's already been scaled
+        var style = window.getComputedStyle(mydiv);
+        var transform = style.transform || style.webkitTransform || style.mozTransform;
+        if (transform && transform !== 'none') {
+            var scale = transform.match(/scale\((\d+\.?\d*)\)/);
+            if (scale && scale[1]) {
+                initScale = parseFloat(scale[1]);
+            }
+        }
     },
 
     pinch: function (evt) {
-
-        mydiv.scaleX = mydiv.scaleY = initScale * evt.scale;
-        stage.update();
-
-
-        // // scale the div
-        // var scale = evt.zoom;
-
-        // // let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
-        // // scale += 0.1;
-        // mydiv.style.width = this.initialWidth * scale  + 'px';
-        // mydiv.style.height = this.initialHeight * scale + 'px';
-        // // adjust position to scale from the center
-        // mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
-        // mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+        // Scale the div
+        var scale = initScale * evt.zoom;
+        mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
+
+
+
+
+// new AlloyFinger(mydiv, {
+//     multipointStart: function () {
+//         // save initial size and position
+//         this.initialWidth = mydiv.offsetWidth;
+//         this.initialHeight = mydiv.offsetHeight;
+//     },
+
+//     pinch: function (evt) {
+
+//         // scale the div
+//         var scale = evt.zoom;
+
+//         // let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+//         // scale += 0.1;
+//         mydiv.style.width = this.initialWidth * scale  + 'px';
+//         mydiv.style.height = this.initialHeight * scale + 'px';
+//         // adjust position to scale from the center
+//         mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
+//         mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+//     }
+// });
 
 
 document.addEventListener("keydown", function(event) {
