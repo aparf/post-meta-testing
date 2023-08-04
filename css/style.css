@@ -95,6 +95,9 @@ body{
 }
 
 @media screen and (max-width: 600px) {
+  #mydiv{
+    transform-origin: top left;
+  }
   .container{
     z-index: unset;
 /*    height:95%;*/
