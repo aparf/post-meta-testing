@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 13.5")
+alert("VERSION 14")
 
 
 
@@ -145,6 +145,9 @@ new AlloyFinger(mydiv, {
     pinch: function (evt) {
         // scale the div
         var scale = evt.zoom;
+
+        let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+        scale += 1;
         // mydiv.style.width = this.initialWidth * scale * 0.25 + 'px';
         // mydiv.style.height = this.initialHeight * scale * 0.25 + 'px';
         // // adjust position to scale from the center
