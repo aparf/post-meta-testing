@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 16")
+alert("VERSION 16.1")
 
 
 
@@ -144,8 +144,7 @@ new AlloyFinger(mydiv, {
         // save initial size and position
         // this.initialWidth = mydiv.offsetWidth;
         // this.initialHeight = mydiv.offsetHeight;
-
-        initScale = bmp.scaleX;
+        initScale = mydiv.scaleX;
     },
 
     pinch: function (evt) {
