@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 19.2")
+alert("VERSION 19.3")
 
 
 
@@ -150,25 +150,31 @@ new AlloyFinger(mydiv, {
         // Fetch the current scale of the div if it's already been scaled
         var style = window.getComputedStyle(mydiv);
 
-        var transform = style.transform || style.webkitTransform || style.mozTransform;
-        if (transform && transform !== 'none') {
-            var scale = transform.match(/scale\((\d+\.?\d*)\)/);
-            if (scale && scale[1]) {
-                initScale = parseFloat(scale[1]);
-            }
-        }
+        var initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+
+        // var transform = style.transform || style.webkitTransform || style.mozTransform;
+        // if (transform && transform !== 'none') {
+        //     var scale = transform.match(/scale\((\d+\.?\d*)\)/);
+        //     if (scale && scale[1]) {
+        //         initScale = parseFloat(scale[1]);
+        //     }
+        // }
     },
 
     pinch: function (evt) {
         // Scale the div
-        var scale = initScale * evt.zoom;
-        alert(evt.zoom)
+
+        var scale = 0;
 
         if(evt.zoom >= 1){
-          mydiv.style.transform = 'scale(' + initScale + scaleFactor + ')';
+          scale += 0.1
+      
         } else{
-          mydiv.style.transform = 'scale(' + initScale - scaleFactor + ')';
+          scale -= 0.1
+  
         }
+
+       mydiv.style.transform = 'scale(' + scale + ')';
 
     }
 });
