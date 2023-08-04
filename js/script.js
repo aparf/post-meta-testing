@@ -144,7 +144,7 @@ new AlloyFinger(mydiv, {
 
     pinch: function (evt) {
         // scale the div
-        var scale = evt.zoom;
+        // var scale = evt.zoom;
 
         let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
         scale += 1;
