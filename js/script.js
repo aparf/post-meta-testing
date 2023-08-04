@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 19.3")
+alert("VERSION 19.4")
 
 
 
@@ -150,7 +150,7 @@ new AlloyFinger(mydiv, {
         // Fetch the current scale of the div if it's already been scaled
         // var style = window.getComputedStyle(mydiv);
 
-        var initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+        initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
 
         // var transform = style.transform || style.webkitTransform || style.mozTransform;
         // if (transform && transform !== 'none') {
