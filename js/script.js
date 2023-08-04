@@ -142,6 +142,8 @@ console.log(initialPos)
 
 var mydiv = document.getElementById('mydiv');
 var initScale = 1; // You should initialize the scale to 1, which stands for 100% (the original size)
+var scaleFactor = 0.01;
+
 
 new AlloyFinger(mydiv, {
     multipointStart: function () {
@@ -158,10 +160,12 @@ new AlloyFinger(mydiv, {
 
     pinch: function (evt) {
         // Scale the div
-        var scale = initScale * evt.zoom;
+        var scale = initScale * 1.1
         mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
+
+
 
 
 

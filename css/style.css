@@ -97,15 +97,17 @@ body{
 @media screen and (max-width: 600px) {
 
   #windowPath{
-     transition: width height 0.4s ease-in
+     transition: transform 0.3s ease-out;
     }
   
 
 
   #mydiv{
     touch-action: auto;
-    transform-origin: top left;
+    transform-origin: center;
   }
+
+
   .container{
     z-index: unset;
 /*    height:95%;*/
