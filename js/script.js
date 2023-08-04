@@ -12,15 +12,8 @@ if (window.navigator.maxTouchPoints > 0) {
 const centerEl = document.getElementById("center");
 const leftEl = document.getElementById("left");
 
-// const rootElement = document.getElementById("mobileVersion")
-// const viewPortH = rootElement.getBoundingClientRect().height;
-// const windowH = window.innerHeight;
 
-// const browserUiBarsH = viewPortH - windowH;
-// rootElement.style.height = `calc(100vh - ${browserUiBarsH}px)`;
-// document.getElementById("left").style.height = `calc(100vh - ${browserUiBarsH}px)`;
-// document.getElementById("right").style.height = `calc(100vh - ${browserUiBarsH}px)`;
-
+// adjust the height based
 const rootElement = document.getElementById("container");
 const viewPortH = rootElement.getBoundingClientRect().height;
 const windowH = window.innerHeight;
@@ -85,7 +78,7 @@ function dragElement(elmnt) {
   function closeDragElement() {
     // stop moving when mouse button is released:
     document.onmouseup = null;
-    document.onmousemove = null;
+    document.onmousemove = null; 
   }
 
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -133,15 +126,8 @@ window.onload = function() {
 }
 
 
-alert("VERSION 12")
+alert("VERSION 13")
 
-// var af = new AlloyFinger(document.getElementById("mydiv"), {
-//   pinchStart: function () {
-//     initScale = document.getElementById("mydiv").scaleX;
-//   },
-//   pinch: function (evt) {
-//       document.getElementById("mydiv").scaleX = document.getElementById("mydiv").scaleY = initScale * evt.zoom;
-//   }})
 
 
 
@@ -155,14 +141,17 @@ new AlloyFinger(mydiv, {
         this.initialWidth = mydiv.offsetWidth;
         this.initialHeight = mydiv.offsetHeight;
     },
+
     pinch: function (evt) {
         // scale the div
         var scale = evt.zoom;
-        mydiv.style.width = this.initialWidth * scale + 'px';
-        mydiv.style.height = this.initialHeight * scale + 'px';
-        // adjust position to scale from the center
-        mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
-        mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+        // mydiv.style.width = this.initialWidth * scale * 0.25 + 'px';
+        // mydiv.style.height = this.initialHeight * scale * 0.25 + 'px';
+        // // adjust position to scale from the center
+        // mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
+        // mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+
+        mydiv.style.transform = "scale(" + scale + ")";
     }
 });
 
