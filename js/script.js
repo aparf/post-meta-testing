@@ -148,7 +148,7 @@ var scaleFactor = 0.01;
 new AlloyFinger(mydiv, {
     multipointStart: function () {
         // Fetch the current scale of the div if it's already been scaled
-        var style = window.getComputedStyle(mydiv);
+        // var style = window.getComputedStyle(mydiv);
 
         var initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
 
@@ -163,8 +163,8 @@ new AlloyFinger(mydiv, {
 
     pinch: function (evt) {
         // Scale the div
-
-        var scale = 0;
+        // var initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+        var scale = initScale;
 
         if(evt.zoom >= 1){
           scale += 0.1
