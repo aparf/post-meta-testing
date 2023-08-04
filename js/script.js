@@ -103,15 +103,17 @@ window.onload = function() {
   });
 
   box.addEventListener('touchmove', function(e) {
-    // grab the location of touch
-    var touchLocation = e.targetTouches[0];
-    
-    // assign box new coordinates based on the touch.
-    box.style.left = touchLocation.pageX - delta.x + 'px';
-    box.style.top = touchLocation.pageY - delta.y + 'px';
+    if (e.targetTouches.length === 1) { 
+      // grab the location of touch
+      var touchLocation = e.targetTouches[0];
+      
+      // assign box new coordinates based on the touch.
+      box.style.left = touchLocation.pageX - delta.x + 'px';
+      box.style.top = touchLocation.pageY - delta.y + 'px';
 
-    // prevent page scrolling
-    e.preventDefault();
+      // prevent page scrolling
+      e.preventDefault();
+    }
   });
 
   /* record the position of the touch
@@ -140,9 +142,11 @@ console.log(initialPos)
 
 
 
+
+
 var mydiv = document.getElementById('mydiv');
 var initScale = 1; // You should initialize the scale to 1, which stands for 100% (the original size)
-var scaleFactor = 0.01;
+
 
 
 new AlloyFinger(mydiv, {
@@ -152,13 +156,7 @@ new AlloyFinger(mydiv, {
 
         initScale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
 
-        // var transform = style.transform || style.webkitTransform || style.mozTransform;
-        // if (transform && transform !== 'none') {
-        //     var scale = transform.match(/scale\((\d+\.?\d*)\)/);
-        //     if (scale && scale[1]) {
-        //         initScale = parseFloat(scale[1]);
-        //     }
-        // }
+
     },
 
     pinch: function (evt) {
