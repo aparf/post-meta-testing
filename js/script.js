@@ -84,51 +84,51 @@ function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
 }
-
+1
 // Make the DIV element draggable:
 dragElement(document.getElementById("mydiv"));
 
 
-window.onload = function() {
-  // find the element that you want to drag.
-  var box = document.getElementById('mydiv');
+// window.onload = function() {
+//   // find the element that you want to drag.
+//   var box = document.getElementById('mydiv');
   
-  var delta = { x: 0, y: 0 }; // how much we've moved
+//   var delta = { x: 0, y: 0 }; // how much we've moved
 
-  box.addEventListener('touchstart', function(e) {
-    // record the initial touch point
-    var touch = e.targetTouches[0];
-    delta.x = touch.pageX - box.offsetLeft;
-    delta.y = touch.pageY - box.offsetTop;
-  });
+//   box.addEventListener('touchstart', function(e) {
+//     // record the initial touch point
+//     var touch = e.targetTouches[0];
+//     delta.x = touch.pageX - box.offsetLeft;
+//     delta.y = touch.pageY - box.offsetTop;
+//   });
 
-  box.addEventListener('touchmove', function(e) {
-    if (e.targetTouches.length === 1) { 
-      // grab the location of touch
-      var touchLocation = e.targetTouches[0];
+//   box.addEventListener('touchmove', function(e) {
+//     if (e.targetTouches.length === 1) { 
+//       // grab the location of touch
+//       var touchLocation = e.targetTouches[0];
       
-      // assign box new coordinates based on the touch.
-      box.style.left = touchLocation.pageX - delta.x + 'px';
-      box.style.top = touchLocation.pageY - delta.y + 'px';
+//       // assign box new coordinates based on the touch.
+//       box.style.left = touchLocation.pageX - delta.x + 'px';
+//       box.style.top = touchLocation.pageY - delta.y + 'px';
 
-      // prevent page scrolling
-      e.preventDefault();
-    }
-  });
+//       // prevent page scrolling
+//       e.preventDefault();
+//     }
+//   });
 
-  /* record the position of the touch
-  when released using touchend event.
-  This will be the drop position. */
+//   /* record the position of the touch
+//   when released using touchend event.
+//   This will be the drop position. */
   
-  box.addEventListener('touchend', function(e) {
-    // current box position.
-    var x = parseInt(box.style.left);
-    var y = parseInt(box.style.top);
-  });
-}
+//   box.addEventListener('touchend', function(e) {
+//     // current box position.
+//     var x = parseInt(box.style.left);
+//     var y = parseInt(box.style.top);
+//   });
+// }
 
 
-alert("VERSION 19.4")
+alert("VERSION 19.5")
 
 
 
@@ -175,7 +175,20 @@ new AlloyFinger(mydiv, {
        mydiv.style.transform = 'scale(' + scale + ')';
 
     }
+    box.style.left = touchLocation.pageX - delta.x + 'px';
+      box.style.top = touchLocation.pageY - delta.y + 'px';
+
+    pressMove: function(evt){
+      var x = parseInt(mydiv.style.left) + evt.deltaX;
+      var y = parseInt(mydiv.style.top) + evt.deltaY;
+
+      mydiv.style.left = x + 'px';
+      mydiv.style.top = y + 'px';
+    }
 });
+
+
+
 
 
 
