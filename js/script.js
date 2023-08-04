@@ -126,39 +126,62 @@ window.onload = function() {
 }
 
 
-alert("VERSION 14.5")
+alert("VERSION 15")
 
 
 
+
+
+// var mydiv = document.getElementById('mydiv');
+// mydiv.style.transformOrigin = 'center center';
+
+// var initialPos = { left: mydiv.offsetLeft, top: mydiv.offsetTop };
+// console.log(initialPos)
+
+
+// new AlloyFinger(mydiv, {
+//     multipointStart: function () {
+//         // save initial size and position
+//         this.initialWidth = mydiv.offsetWidth;
+//         this.initialHeight = mydiv.offsetHeight;
+//     },
+
+//     pinch: function (evt) {
+//         // scale the div
+//         var scale = evt.zoom;
+
+//         // let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
+//         // scale += 0.1;
+//         mydiv.style.width = this.initialWidth * scale  + 'px';
+//         mydiv.style.height = this.initialHeight * scale + 'px';
+//         // adjust position to scale from the center
+//         mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
+//         mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+//     }
+// });
 
 
 var mydiv = document.getElementById('mydiv');
-mydiv.style.transformOrigin = 'center center';
-
-var initialPos = { left: mydiv.offsetLeft, top: mydiv.offsetTop };
-console.log(initialPos)
-
 
 new AlloyFinger(mydiv, {
     multipointStart: function () {
-        // save initial size and position
-        this.initialWidth = mydiv.offsetWidth;
-        this.initialHeight = mydiv.offsetHeight;
+        // save initial scale
+        this.initialScale = window.getComputedStyle(mydiv).transform === 'none' ? 1 : parseFloat(window.getComputedStyle(mydiv).transform.split(',')[3]);
     },
 
     pinch: function (evt) {
-        // scale the div
-        var scale = evt.zoom;
+        // calculate new scale
+        var scale = this.initialScale * evt.zoom;
 
-        // let scale = parseFloat(window.getComputedStyle(document.getElementById("mydiv")).transform.match(/^matrix\(([^,]*)/)[1]); 
-        // scale += 0.1;
-        mydiv.style.width = this.initialWidth * scale  + 'px';
-        mydiv.style.height = this.initialHeight * scale + 'px';
-        // adjust position to scale from the center
-        mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
-        mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+        // set transform-origin to center center
+        mydiv.style.transformOrigin = 'center center';
+
+        // apply scale transformation
+        mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
+
+
 
 
 document.addEventListener("keydown", function(event) {
