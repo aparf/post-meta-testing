@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 19")
+alert("VERSION 19.1")
 
 
 
@@ -149,6 +149,7 @@ new AlloyFinger(mydiv, {
     multipointStart: function () {
         // Fetch the current scale of the div if it's already been scaled
         var style = window.getComputedStyle(mydiv);
+
         var transform = style.transform || style.webkitTransform || style.mozTransform;
         if (transform && transform !== 'none') {
             var scale = transform.match(/scale\((\d+\.?\d*)\)/);
@@ -161,6 +162,9 @@ new AlloyFinger(mydiv, {
     pinch: function (evt) {
         // Scale the div
         var scale = initScale * evt.zoom;
+        alert(evt.zoom)
+        // if(evt.zoom >= 0)
+
 
         mydiv.style.transform = 'scale(' + scale + ')';
     }
