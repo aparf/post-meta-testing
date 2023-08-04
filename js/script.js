@@ -126,30 +126,14 @@ window.onload = function() {
 }
 
 
-alert("VERSION 6")
-var mc = new Hammer.Manager(document.getElementById("mydiv"));
+alert("VERSION 7")
 
-var pinch = new Hammer.Pinch();
-
-// add to the Manager
-mc.add([pinch]);
-
-var initialScale = 1;
-var scale = 1;
-
-mc.on("pinchin pinchout", function(ev) {
-    if(ev.type == 'pinchin') {
-        scale = initialScale - ev.scale;
-    } else if(ev.type == 'pinchout') {
-        scale = initialScale + ev.scale;
-    }
-
-    myElement.style.transform = 'scale(' + scale + ')';
-});
-
-mc.on("pinchend", function(ev) {
-    initialScale = scale;
-});
+var af = new AlloyFinger(document.getElementById("mydiv"), {
+  pinch: function (evt) {
+      alert("ZOOM")
+      console.log(evt.zoom);
+    },
+})
 
 
 document.addEventListener("keydown", function(event) {
