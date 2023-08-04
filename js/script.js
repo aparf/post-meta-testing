@@ -1,5 +1,12 @@
 
-
+//check whether mobile browser is used 
+if (window.navigator.maxTouchPoints > 0) {
+  alert("MOBILE DEVICE")
+        var meta = document.createElement('meta');
+        meta.name = "viewport";
+        meta.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no";
+        document.getElementsByTagName('head')[0].appendChild(meta);
+      }
 
 // Get the center and left elements
 const centerEl = document.getElementById("center");
@@ -126,7 +133,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 11")
+alert("VERSION 12")
 
 // var af = new AlloyFinger(document.getElementById("mydiv"), {
 //   pinchStart: function () {
@@ -137,24 +144,28 @@ alert("VERSION 11")
 //   }})
 
 
-var mydiv = document.getElementById('mydiv');
 
- new AlloyFinger(mydiv, {
-            multipointStart: function () {
-                // save initial size and position
-                this.initialWidth = mydiv.offsetWidth;
-                this.initialHeight = mydiv.offsetHeight;
-            },
-            pinch: function (evt) {
-                // scale the div
-                var scale = evt.zoom;
-                mydiv.style.width = this.initialWidth * scale + 'px';
-                mydiv.style.height = this.initialHeight * scale + 'px';
-                // adjust position to scale from the center
-                mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
-                mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
-            }
-        });
+
+var mydiv = document.getElementById('mydiv');
+var initialPos = { left: mydiv.offsetLeft, top: mydiv.offsetTop };
+
+new AlloyFinger(mydiv, {
+    multipointStart: function () {
+        // save initial size and position
+        this.initialWidth = mydiv.offsetWidth;
+        this.initialHeight = mydiv.offsetHeight;
+    },
+    pinch: function (evt) {
+        // scale the div
+        var scale = evt.zoom;
+        mydiv.style.width = this.initialWidth * scale + 'px';
+        mydiv.style.height = this.initialHeight * scale + 'px';
+        // adjust position to scale from the center
+        mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
+        mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
+    }
+});
+
 
 document.addEventListener("keydown", function(event) {
   event.preventDefault()
