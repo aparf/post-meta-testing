@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 13")
+alert("VERSION 13.5")
 
 
 
@@ -151,7 +151,7 @@ new AlloyFinger(mydiv, {
         // mydiv.style.left = (initialPos.left - (mydiv.offsetWidth - this.initialWidth) / 2) + 'px';
         // mydiv.style.top = (initialPos.top - (mydiv.offsetHeight - this.initialHeight) / 2) + 'px';
 
-        mydiv.style.transform = "scale(" + scale + ")";
+        mydiv.style.transform = "scale(" + scale * 0.01 + ")";
     }
 });
 
