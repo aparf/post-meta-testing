@@ -175,8 +175,6 @@ new AlloyFinger(mydiv, {
        mydiv.style.transform = 'scale(' + scale + ')';
 
     }
-    box.style.left = touchLocation.pageX - delta.x + 'px';
-      box.style.top = touchLocation.pageY - delta.y + 'px';
 
     pressMove: function(evt){
       var x = parseInt(mydiv.style.left) + evt.deltaX;
