@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 7")
+alert("VERSION 8")
 
 var af = new AlloyFinger(document.getElementById("mydiv"), {
   pinchStart: function () {

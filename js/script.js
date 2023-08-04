@@ -126,14 +126,15 @@ window.onload = function() {
 }
 
 
-alert("VERSION 7")
+alert("VERSION 8")
 
 var af = new AlloyFinger(document.getElementById("mydiv"), {
+  pinchStart: function () {
+                initScale = el.scaleX;
+            },
   pinch: function (evt) {
-      alert("ZOOM")
-      console.log(evt.zoom);
-    },
-})
+      el.scaleX = el.scaleY = initScale * evt.zoom;
+  }})
 
 
 document.addEventListener("keydown", function(event) {
