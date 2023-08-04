@@ -126,7 +126,7 @@ window.onload = function() {
 }
 
 
-alert("VERSION 17")
+alert("VERSION 18")
 
 
 
@@ -160,10 +160,13 @@ new AlloyFinger(mydiv, {
 
     pinch: function (evt) {
         // Scale the div
-        var scale = initScale * 1.1
+        var scale = initScale *(evt.zoom - 1) * scaleFactor;
         mydiv.style.transform = 'scale(' + scale + ')';
     }
 });
+
+
+
 
 
 
