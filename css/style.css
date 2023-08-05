@@ -97,7 +97,8 @@ body{
 @media screen and (max-width: 600px) {
 
   #windowPath{
-     transition: transform 0.3s ease-out;
+     transition: transform 0.2s ease-in;
+
     }
   
 

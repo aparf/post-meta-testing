@@ -128,7 +128,7 @@ dragElement(document.getElementById("mydiv"));
 // }
 
 
-alert("VERSION 19.5")
+alert("VERSION 20")
 
 
 
@@ -166,10 +166,10 @@ new AlloyFinger(mydiv, {
         var scale = initScale;
 
         if(evt.zoom >= 1){
-          scale += 0.1
+          scale += 0.25
       
         } else{
-          scale -= 0.1
+          scale -= 0.25
   
         }
 
