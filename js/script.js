@@ -148,6 +148,7 @@ var mydiv = document.getElementById('mydiv');
 var initScale = 1; // You should initialize the scale to 1, which stands for 100% (the original size)
 
 
+console.log(mydiv.style.left)
 
 new AlloyFinger(mydiv, {
     multipointStart: function () {
@@ -178,9 +179,15 @@ new AlloyFinger(mydiv, {
 
 
     pressMove: function(evt){
-      var x = parseInt(mydiv.style.left) + evt.deltaX;
-      var y = parseInt(mydiv.style.top) + evt.deltaY;
-
+      console.log(mydiv.style.left)
+      if (!(mydiv.style.left)){
+        var x = evt.deltaX;
+        var y = evt.deltaY;
+      } else {
+        var x = parseInt(mydiv.style.left) + evt.deltaX;
+        var y = parseInt(mydiv.style.top) + evt.deltaY;
+      }
+      
       mydiv.style.left = x + 'px';
       mydiv.style.top = y + 'px';
     }
