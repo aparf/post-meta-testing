@@ -178,19 +178,34 @@ new AlloyFinger(mydiv, {
     },
 
 
+    // pressMove: function(evt){
+    //   console.log(mydiv.style.left)
+    //   if (!(mydiv.style.left)){
+    //     var x = evt.deltaX;
+    //     var y = evt.deltaY;
+    //   } else {
+    //     var x = parseInt(mydiv.style.left) + evt.deltaX;
+    //     var y = parseInt(mydiv.style.top) + evt.deltaY;
+    //   }
+      
+    //   mydiv.style.left = x + 'px';
+    //   mydiv.style.top = y + 'px';
+    // }
+
+
     pressMove: function(evt){
-      console.log(mydiv.style.left)
-      if (!(mydiv.style.left)){
-        var x = evt.deltaX;
-        var y = evt.deltaY;
-      } else {
-        var x = parseInt(mydiv.style.left) + evt.deltaX;
-        var y = parseInt(mydiv.style.top) + evt.deltaY;
-      }
+      var rect = mydiv.getBoundingClientRect();
+      
+      // If left and top are not set, use the initial position of the div
+      var x = (mydiv.style.left) ? parseInt(mydiv.style.left) + evt.deltaX : rect.left + evt.deltaX;
+      var y = (mydiv.style.top) ? parseInt(mydiv.style.top) + evt.deltaY : rect.top + evt.deltaY;
       
       mydiv.style.left = x + 'px';
       mydiv.style.top = y + 'px';
+      mydiv.style.position = 'absolute';  // you also need to set the position to absolute to make left and top work
     }
+
+
 });
 
 
