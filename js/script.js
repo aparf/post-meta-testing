@@ -128,7 +128,7 @@ dragElement(document.getElementById("mydiv"));
 // }
 
 
-alert("VERSION 20")
+alert("VERSION 21")
 
 
 
