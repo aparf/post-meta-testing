@@ -260,3 +260,10 @@ document.addEventListener("keydown", function(event) {
   } 
 
 })
+
+
+var button = document.getElementById("button"); 
+
+button.addEventListener("click", () => {
+  alert("CLICK")
+})
