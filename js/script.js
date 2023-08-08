@@ -128,7 +128,7 @@ dragElement(document.getElementById("mydiv"));
 // }
 
 
-alert("VERSION 22")
+alert("VERSION 23")
 
 
 
@@ -263,7 +263,25 @@ document.addEventListener("keydown", function(event) {
 
 
 var button = document.getElementById("button"); 
+var closedState = false
 
 button.addEventListener("click", () => {
-  alert("CLICK")
+  var path = document.getElementById("windowPath2")
+  if (!(closedState)){
+    path.setAttribute("d", "M0 0H393V852H0V0Z");
+  } else {
+    path.setAttribute("d", "M393 0H0V157C0 83.5461 59.5461 24 133 24H259C332.454 24 392 83.5461 392 157V702C392 775.454 332.454 835 259 835H133C59.5461 835 0 775.454 0 702V852H393V0Z");
+  }
+  closedState = !(closedState)
+  
+  
+  // Force a redraw
+  path.style.display = 'none';
+  path.offsetHeight; // no need to store this anywhere, the reference is enough
+  path.style.display = '';
+
+  // document.getElementById("container").innerHTML += "";
+
+
+
 })
