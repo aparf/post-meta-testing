@@ -37,7 +37,7 @@ function calculateVerticalWidth() {
     centerWidth = mobileWidth
   }
 
-  let width = ((window.innerWidth - centerWidth) / 2);
+  let width =  Math.ceil((window.innerWidth - centerWidth) / 2);
   document.getElementById("left").style.width = width + "px";
   document.getElementById("right").style.width = width + "px";
 }
